@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customize Your College Merch - Slayyin</title>
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="favicon_io (2)/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="favicon_io (2)/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="favicon_io (2)/favicon-16x16.png"
+    />
+    <link rel="manifest" href="favicon_io (2)/site.webmanifest" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="customize.css" />
+  </head>
+
+  <body>
+    <header>
+      <div class="header-center">
+        <a href="index.html">
+          <img src="website-logo.png" alt="Slayyin Logo" class="logo" />
+        </a>
+      </div>
+    </header>
+
+    <div class="customize-container">
+      <div class="customize-header">
+        <h1>Customize Your College Merch</h1>
+        <p>
+          Tell us about your requirements and we'll create the perfect
+          merchandise for your college
+        </p>
+      </div>
+
+      <!-- New Inspiration Gallery Section -->
+      <div class="inspiration-gallery">
+        <h2>Design Inspiration Gallery</h2>
+        <p>Check out some of our previous custom college merchandise designs</p>
+
+        <div class="gallery-container">
+          <div class="gallery-item">
+            <img
+              src="Images/inspiration-1.jpg"
+              alt="College Hoodie Design"
+              onerror="this.src='hoopers-showcase.jpg'"
+            />
+            <div class="overlay">
+              <span>College Hoodies</span>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <img
+              src="Images/inspiration-2.jpg"
+              alt="College T-shirt Design"
+              onerror="this.src='bclub-merch.jpg'"
+            />
+            <div class="overlay">
+              <span>Custom T-shirts</span>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <img
+              src="Images/inspiration-3.jpg"
+              alt="College Cap Design"
+              onerror="this.src='explore-slayyin.jpg'"
+            />
+            <div class="overlay">
+              <span>College Caps</span>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <img
+              src="Images/inspiration-4.jpg"
+              alt="College Merch Collection"
+              onerror="this.src='slayyin-hero-4.jpg'"
+            />
+            <div class="overlay">
+              <span>Complete Collections</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <form class="customize-form" id="customizeForm">
+        <div class="form-group">
+          <label for="college-name">College Name</label>
+          <input type="text" id="college-name" required />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="contact-name">Contact Person Name</label>
+            <input type="text" id="contact-name" required />
+          </div>
+          <div class="form-group">
+            <label for="contact-phone">Contact Phone Number</label>
+            <input type="tel" id="contact-phone" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" required />
+        </div>
+
+        <!-- New Merch Type Field -->
+        <div class="form-group">
+          <label for="merch-type">Merch Type</label>
+          <input
+            type="text"
+            id="merch-type"
+            placeholder="e.g., T-shirts, Hoodies, Caps, etc."
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="quantity">Estimated Quantity</label>
+          <input type="number" id="quantity" min="50" required />
+        </div>
+
+        <div class="form-group">
+          <label for="requirements">Special Requirements</label>
+          <textarea
+            id="requirements"
+            rows="4"
+            placeholder="Tell us about any specific design requirements, colors, or other details..."
+          ></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Request a Call</button>
+      </form>
+
+      <!-- New Benefits Section -->
+      <div class="benefits-section">
+        <h2>Why Customize With Us?</h2>
+
+        <div class="benefits-container">
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <i class="fas fa-palette"></i>
+            </div>
+            <h3>Professional Design</h3>
+            <p>
+              Our expert designers create stunning graphics that represent your
+              college's unique identity
+            </p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <i class="fas fa-tshirt"></i>
+            </div>
+            <h3>Premium Materials</h3>
+            <p>
+              We use high-quality fabrics and materials that ensure comfort and
+              durability
+            </p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <i class="fas fa-truck"></i>
+            </div>
+            <h3>Reliable Delivery</h3>
+            <p>
+              On-time delivery for all your college events and functions with
+              tracking available
+            </p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <i class="fas fa-hand-holding-usd"></i>
+            </div>
+            <h3>Competitive Pricing</h3>
+            <p>
+              Affordable bulk pricing with special discounts for colleges and
+              educational institutions
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- New FAQ Section -->
+      <div class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-container">
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>What's the minimum order quantity for custom merchandise?</h3>
+              <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="faq-answer">
+              <p>
+                Our minimum order quantity is typically 50 pieces per design for
+                most products like t-shirts and hoodies. For premium items, we
+                may have different minimums. For specific requirements, please
+                contact us.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>
+                How long does it take to produce custom college merchandise?
+              </h3>
+              <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="faq-answer">
+              <p>
+                Production time varies based on quantity and complexity, but
+                typically takes 2-3 weeks after design approval. For urgent
+                orders, we offer express services at an additional cost.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>
+                Do you help with design or should we provide our own artwork?
+              </h3>
+              <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="faq-answer">
+              <p>
+                We offer comprehensive design services! Our team can create
+                custom artwork based on your ideas, or you can provide your own
+                designs. If you have a college logo or specific design
+                requirements, we'll work with you to bring your vision to life.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>What payment methods do you accept?</h3>
+              <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="faq-answer">
+              <p>
+                We accept various payment methods including bank transfers, UPI,
+                and major credit/debit cards. For institutional orders, we can
+                accommodate purchase orders and provide GST invoices as
+                required.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>Can we see samples before placing a large order?</h3>
+              <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="faq-answer">
+              <p>
+                Yes! We offer digital proofs for design approval at no cost. For
+                physical samples, there's a nominal fee that can be credited
+                toward your final order. Sample production typically takes 5-7
+                business days.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonials Section -->
+      <div class="testimonials-section">
+        <h2>What Colleges Say About Our Custom Merch</h2>
+
+        <div class="testimonials-container">
+          <div class="testimonial-slide active">
+            <div class="testimonial-content">
+              <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+              <p>
+                "Slayyin created amazing custom merchandise for our college
+                fest. The quality was exceptional, and they delivered before the
+                deadline. Our students loved the designs!"
+              </p>
+              <div class="testimonial-author">
+                <img
+                  src="Images/profile1.jpg"
+                  alt="Testimonial Author"
+                  onerror="this.src='data:image/svg+xml;charset=UTF-8,%3csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'50\' height=\'50\' viewBox=\'0 0 50 50\'%3e%3ccircle cx=\'25\' cy=\'25\' r=\'20\' fill=\'%23444\'/%3e%3cpath fill=\'%23fff\' d=\'M15,25 C15,20 20,16 25,16 C30,16 35,20 35,25 C35,30 30,34 25,34 C20,34 15,30 15,25 M16,15 A1,1 1 0,0 34,15\'/%3e%3c/svg%3e'"
+                />
+                <div class="author-info">
+                  <h4>Dr. Rahul Sharma</h4>
+                  <p>Dean of Student Affairs, Delhi Technical University</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-slide">
+            <div class="testimonial-content">
+              <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+              <p>
+                "We've been working with Slayyin for three consecutive years for
+                our college merchandise. The team is professional, creative, and
+                understands exactly what we want. Highly recommended!"
+              </p>
+              <div class="testimonial-author">
+                <img
+                  src="Images/profile2.jpg"
+                  alt="Testimonial Author"
+                  onerror="this.src='data:image/svg+xml;charset=UTF-8,%3csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'50\' height=\'50\' viewBox=\'0 0 50 50\'%3e%3ccircle cx=\'25\' cy=\'25\' r=\'20\' fill=\'%23444\'/%3e%3cpath fill=\'%23fff\' d=\'M15,25 C15,20 20,16 25,16 C30,16 35,20 35,25 C35,30 30,34 25,34 C20,34 15,30 15,25 M16,15 A1,1 1 0,0 34,15\'/%3e%3c/svg%3e'"
+                />
+                <div class="author-info">
+                  <h4>Priya Menon</h4>
+                  <p>Cultural Secretary, St. Xavier's College</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-slide">
+            <div class="testimonial-content">
+              <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+              <p>
+                "The hoodies and t-shirts designed by Slayyin became the talk of
+                our campus. The premium quality fabric and attention to detail
+                in the designs was impressive. Looking forward to collaborating
+                again!"
+              </p>
+              <div class="testimonial-author">
+                <img
+                  src="Images/profile3.jpg"
+                  alt="Testimonial Author"
+                  onerror="this.src='data:image/svg+xml;charset=UTF-8,%3csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'50\' height=\'50\' viewBox=\'0 0 50 50\'%3e%3ccircle cx=\'25\' cy=\'25\' r=\'20\' fill=\'%23444\'/%3e%3cpath fill=\'%23fff\' d=\'M15,25 C15,20 20,16 25,16 C30,16 35,20 35,25 C35,30 30,34 25,34 C20,34 15,30 15,25 M16,15 A1,1 1 0,0 34,15\'/%3e%3c/svg%3e'"
+                />
+                <div class="author-info">
+                  <h4>Arjun Kapoor</h4>
+                  <p>Student Council President, IIM Bangalore</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-controls">
+          <button class="prev-testimonial">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <div class="testimonial-dots">
+            <span class="dot active" data-slide="0"></span>
+            <span class="dot" data-slide="1"></span>
+            <span class="dot" data-slide="2"></span>
+          </div>
+          <button class="next-testimonial">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#featured-products">Shop</a></li>
+            <li><a href="customize.html">Customize</a></li>
+            <li><a href="#about-slayyin">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#faq-section">FAQ</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Follow Us</h3>
+          <div class="social-icons">
+            <a href="https://www.instagram.com/slayyin.co/" target="#"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.linkedin.com/company/slayyin" target="#"
+              ><i class="fab fa-linkedin"></i
+            ></a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h3>Policies</h3>
+          <ul>
+            <li><a href="policies.html#privacy-policy">Privacy Policy</a></li>
+            <li><a href="policies.html#return-policy">Return Policy</a></li>
+            <li><a href="policies.html#terms-of-service">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Slayyin. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      // Form validation and handling
+      function validateForm() {
+        const collegeName = document
+          .getElementById("college-name")
+          .value.trim();
+        const contactName = document
+          .getElementById("contact-name")
+          .value.trim();
+        const contactPhone = document
+          .getElementById("contact-phone")
+          .value.trim();
+        const email = document.getElementById("email").value.trim();
+        const merchType = document.getElementById("merch-type").value.trim();
+        const quantity = document.getElementById("quantity").value;
+
+        if (!collegeName) {
+          showError("college-name", "Please enter your college name");
+          return false;
+        }
+
+        if (!contactName) {
+          showError("contact-name", "Please enter contact person name");
+          return false;
+        }
+
+        if (!contactPhone) {
+          showError("contact-phone", "Please enter contact phone number");
+          return false;
+        }
+
+        if (!isValidPhone(contactPhone)) {
+          showError("contact-phone", "Please enter a valid phone number");
+          return false;
+        }
+
+        if (!email) {
+          showError("email", "Please enter your email address");
+          return false;
+        }
+
+        if (!isValidEmail(email)) {
+          showError("email", "Please enter a valid email address");
+          return false;
+        }
+
+        if (!merchType) {
+          showError(
+            "merch-type",
+            "Please specify the type of merchandise you need"
+          );
+          return false;
+        }
+
+        if (!quantity || quantity < 50) {
+          showError("quantity", "Minimum quantity required is 50");
+          return false;
+        }
+
+        return true;
+      }
+
+      function showError(elementId, message) {
+        const element = document.getElementById(elementId);
+        const errorDiv = document.createElement("div");
+        errorDiv.className = "error-message";
+        errorDiv.textContent = message;
+        errorDiv.style.color = "#ff4444";
+        errorDiv.style.fontSize = "0.8rem";
+        errorDiv.style.marginTop = "5px";
+
+        // Remove any existing error message
+        const existingError =
+          element.parentElement.querySelector(".error-message");
+        if (existingError) {
+          existingError.remove();
+        }
+
+        element.parentElement.appendChild(errorDiv);
+        element.style.borderColor = "#ff4444";
+
+        // Remove error after 3 seconds
+        setTimeout(() => {
+          errorDiv.remove();
+          element.style.borderColor = "#444";
+        }, 3000);
+      }
+
+      function isValidPhone(phone) {
+        return /^[0-9]{10}$/.test(phone);
+      }
+
+      function isValidEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      }
+
+      function requestCall(event) {
+        event.preventDefault();
+
+        if (!validateForm()) {
+          return;
+        }
+
+        // Show loading state
+        const submitBtn = document.querySelector(".submit-btn");
+        const originalBtnText = submitBtn.textContent;
+        submitBtn.textContent = "Submitting...";
+        submitBtn.disabled = true;
+
+        // Prepare template parameters
+        const templateParams = {
+          college_name: document.getElementById("college-name").value.trim(),
+          contact_name: document.getElementById("contact-name").value.trim(),
+          contact_phone: document.getElementById("contact-phone").value.trim(),
+          email: document.getElementById("email").value.trim(),
+          merch_type: document.getElementById("merch-type").value.trim(),
+          quantity: document.getElementById("quantity").value,
+          requirements:
+            document.getElementById("requirements").value.trim() ||
+            "No special requirements specified",
+          time: new Date().toLocaleString(),
+          name: document.getElementById("contact-name").value.trim(),
+          message:
+            document.getElementById("requirements").value.trim() ||
+            "No special requirements specified",
+        };
+
+        // Direct API call to EmailJS
+        fetch("https://api.emailjs.com/api/v1.0/email/send", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            service_id: "service_jmydq84",
+            template_id: "template_swsnr16",
+            user_id: "-7X52bylb72VCSUvN",
+            template_params: templateParams,
+          }),
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Network response was not ok");
+            }
+            return response.text();
+          })
+          .then((data) => {
+            console.log("SUCCESS!", data);
+
+            // Show success message
+            const successMessage = document.createElement("div");
+            successMessage.className = "success-message";
+            successMessage.innerHTML = `
+                    <p><i class="fas fa-check-circle"></i> Thank you for your interest! Our team will contact you shortly to discuss your requirements.</p>
+                `;
+            successMessage.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background: #28a745;
+                    color: white;
+                    padding: 15px 30px;
+                    border-radius: 5px;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    opacity: 0;
+                    transition: opacity 0.3s ease;
+                    z-index: 1000;
+                `;
+            document.body.appendChild(successMessage);
+
+            // Animate in
+            setTimeout(() => (successMessage.style.opacity = "1"), 100);
+
+            // Animate out and remove
+            setTimeout(() => {
+              successMessage.style.opacity = "0";
+              setTimeout(() => successMessage.remove(), 300);
+            }, 3000);
+
+            // Reset form
+            document.getElementById("customizeForm").reset();
+
+            // Reset button
+            submitBtn.textContent = originalBtnText;
+            submitBtn.disabled = false;
+          })
+          .catch((error) => {
+            console.error("FAILED...", error);
+
+            // Show error message
+            alert(
+              "Sorry, there was an error submitting your request. Please try again later."
+            );
+
+            // Reset button
+            submitBtn.textContent = originalBtnText;
+            submitBtn.disabled = false;
+          });
+      }
+
+      // Initialize when the DOM is loaded
+      document.addEventListener("DOMContentLoaded", function () {
+        // Add event listener to form submit button
+        document
+          .getElementById("customizeForm")
+          .addEventListener("submit", requestCall);
+
+        // Initialize FAQ toggles
+        initFaqToggles();
+
+        // Testimonial Slider functionality
+        initTestimonialSlider();
+      });
+
+      // FAQ toggle functionality
+      function initFaqToggles() {
+        const faqQuestions = document.querySelectorAll(".faq-question");
+
+        faqQuestions.forEach((question) => {
+          question.addEventListener("click", function () {
+            const faqItem = this.parentElement;
+
+            // Toggle the active class on the clicked FAQ item
+            faqItem.classList.toggle("active");
+
+            // Close other open FAQs (uncomment below for accordion style)
+            // document.querySelectorAll('.faq-item').forEach(item => {
+            //     if (item !== faqItem) {
+            //         item.classList.remove('active');
+            //     }
+            // });
+          });
+        });
+      }
+
+      // Testimonial slider functionality
+      function initTestimonialSlider() {
+        const slides = document.querySelectorAll(".testimonial-slide");
+        const dots = document.querySelectorAll(".dot");
+        const prevBtn = document.querySelector(".prev-testimonial");
+        const nextBtn = document.querySelector(".next-testimonial");
+        let currentSlide = 0;
+
+        // Initial setup
+        showSlide(currentSlide);
+
+        // Previous slide button
+        prevBtn.addEventListener("click", function () {
+          currentSlide =
+            currentSlide === 0 ? slides.length - 1 : currentSlide - 1;
+          showSlide(currentSlide);
+        });
+
+        // Next slide button
+        nextBtn.addEventListener("click", function () {
+          currentSlide =
+            currentSlide === slides.length - 1 ? 0 : currentSlide + 1;
+          showSlide(currentSlide);
+        });
+
+        // Dot indicators
+        dots.forEach((dot) => {
+          dot.addEventListener("click", function () {
+            const slideIndex = parseInt(this.getAttribute("data-slide"));
+            showSlide(slideIndex);
+            currentSlide = slideIndex;
+          });
+        });
+
+        // Auto slide every 5 seconds
+        let slideInterval = setInterval(function () {
+          currentSlide =
+            currentSlide === slides.length - 1 ? 0 : currentSlide + 1;
+          showSlide(currentSlide);
+        }, 5000);
+
+        // Pause auto slide on hover
+        const testimonialContainer = document.querySelector(
+          ".testimonials-container"
+        );
+        testimonialContainer.addEventListener("mouseenter", function () {
+          clearInterval(slideInterval);
+        });
+
+        testimonialContainer.addEventListener("mouseleave", function () {
+          slideInterval = setInterval(function () {
+            currentSlide =
+              currentSlide === slides.length - 1 ? 0 : currentSlide + 1;
+            showSlide(currentSlide);
+          }, 5000);
+        });
+
+        // Show specific slide
+        function showSlide(index) {
+          slides.forEach((slide) => {
+            slide.classList.remove("active");
+          });
+
+          dots.forEach((dot) => {
+            dot.classList.remove("active");
+          });
+
+          slides[index].classList.add("active");
+          dots[index].classList.add("active");
+        }
+      }
+    </script>
+  </body>
+</html>

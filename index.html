@@ -1,0 +1,1600 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Slayyin</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/brands.min.css" />
+  <link rel="stylesheet" href="index.css" />
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon_io (2)/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon_io (2)/favicon-32x32.png">
+  <link rel="manifest" href="favicon_io (2)/site.webmanifest">
+
+  <style>
+    .customization-section {
+      position: relative;
+      padding: 80px 5%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      overflow: hidden;
+    }
+
+    .customization-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .customization-background::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image:
+        radial-gradient(circle at 20% 30%, rgba(255, 204, 0, 0.15) 0%, transparent 25%),
+        radial-gradient(circle at 80% 70%, rgba(255, 204, 0, 0.15) 0%, transparent 25%);
+      z-index: -1;
+    }
+
+    .customization-background::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.1;
+    }
+
+    .buy-now-btn {
+      background-color: #1a8c3f;  /* Darker green shade */
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .buy-now-btn:hover {
+      background-color: #146c32;  /* Even darker shade on hover */
+    }
+
+    .coming-soon-message {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 0, 0.95);
+      color: white;
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 90%;
+      width: 400px;
+      text-align: center;
+      z-index: 1000;
+      display: none;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      -webkit-backdrop-filter: blur(5px);
+      backdrop-filter: blur(5px);
+    }
+
+    .coming-soon-message.active {
+      display: block;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .coming-soon-message h3 {
+      color: #ffcc00;
+      margin-bottom: 15px;
+      font-size: clamp(1.2rem, 4vw, 1.5rem);
+    }
+
+    .coming-soon-message p {
+      margin: 10px 0;
+      line-height: 1.6;
+      font-size: clamp(0.9rem, 3vw, 1.1rem);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .coming-soon-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      display: none;
+    }
+
+    .coming-soon-overlay.active {
+      display: block;
+    }
+
+    .feature-coming-soon {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-100%);
+      background: rgba(0, 0, 0, 0.95);
+      color: white;
+      padding: 12px 25px;
+      border-radius: 5px;
+      z-index: 1000;
+      opacity: 0;
+      transition: all 0.3s ease;
+      font-size: clamp(0.9rem, 3vw, 1.1rem);
+      -webkit-backdrop-filter: blur(5px);
+      backdrop-filter: blur(5px);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .feature-coming-soon.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    @media (max-width: 480px) {
+      .coming-soon-message {
+        padding: 20px;
+        width: 85%;
+      }
+      
+      .feature-coming-soon {
+        padding: 10px 20px;
+      }
+
+      .custom-merch-nav {
+        display: none;  /* Hide navigation arrows on mobile */
+      }
+
+      .custom-merch-slider {
+        touch-action: pan-x;  /* Enable horizontal swipe */
+        -webkit-overflow-scrolling: touch;  /* Smooth scrolling on iOS */
+      }
+    }
+
+    .product-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      background: rgba(17, 17, 17, 0.5);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      height: 100%;
+      min-height: 400px;
+    }
+
+    .product-info {
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      position: relative;
+      padding-bottom: 60px; /* Space for the button */
+    }
+
+    .buy-now-btn {
+      position: absolute;
+      bottom: 15px;
+      left: 15px;
+      right: 15px;
+      background-color: #25D366;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+      width: calc(100% - 30px);
+      margin: 0;
+    }
+
+    .category-filters {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+      padding: 0 10px;
+    }
+
+    .category-btn {
+      padding: 8px 15px;
+      font-size: 0.9rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      border-radius: 20px;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 480px) {
+      .category-filters {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        justify-content: flex-start;
+        padding: 0 15px;
+        margin: 0 -15px 30px -15px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE and Edge */
+      }
+
+      .category-filters::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera */
+      }
+      
+      .category-btn {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+        flex-shrink: 0;
+      }
+      
+      .product-card {
+        min-height: 350px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="header-left">
+      <img src="website-logo.png" alt="Slayyin Logo" class="logo" />
+    </div>
+    <div class="header-center">
+      <div class="search-container">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" class="search-bar" placeholder="Search products..." id="searchInput" />
+        <div class="search-results" id="searchResults"></div>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="mobile-search-icon" onclick="toggleMobileSearch()">
+        <i class="fas fa-search"></i>
+      </div>
+      <div class="user-icon-container" onclick="showComingSoonMessage(event)">
+        <i class="fas fa-user"></i>
+        </div>
+      <div class="wishlist-icon" onclick="showComingSoonMessage(event)">
+        <i class="fas fa-heart"></i>
+      </div>
+      <div class="cart-icon" onclick="showComingSoonMessage(event)">
+        <i class="fas fa-shopping-cart"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Search Container -->
+  <div class="mobile-search-container" id="mobileSearchContainer">
+    <div class="search-container">
+      <i class="fas fa-search search-icon"></i>
+      <input type="text" class="search-bar" placeholder="Search products..." id="mobileSearchInput" />
+      <div class="search-results" id="mobileSearchResults"></div>
+    </div>
+  </div>
+
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <h1>Elevate Your Style with Slayyin</h1>
+      <p>From Fashion to Function - Slay with Slayyin</p>
+      <button class="cta" onclick="scrollToCustomization()">
+        Let's Slay It
+      </button>
+    </div>
+  </section>
+
+  <section class="customization-section" id="customization-section"
+    style="background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); position: relative; overflow: hidden;">
+    <!-- Background elements -->
+    <div
+      style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: radial-gradient(circle at 20% 30%, rgba(255, 204, 0, 0.15) 0%, transparent 25%), radial-gradient(circle at 80% 70%, rgba(255, 204, 0, 0.15) 0%, transparent 25%); z-index: 0;">
+    </div>
+    <div
+      style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.05\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E'); opacity: 0.1; z-index: 0;">
+    </div>
+
+    <div class="customization-card" onclick="window.location.href='customize.html'"
+      style="position: relative; z-index: 2;">
+      <img src="website-customize-your.png" alt="Customize Merch" />
+      <h3 style="font: bolder">Customize Your Merchandise</h3>
+      <p><span style="color: #ffcc00;">Click here</span> to create your own personalized merchandise.</p>
+    </div>
+    <div class="customization-card" onclick="scrollToFeaturedProducts()" style="position: relative; z-index: 2;">
+      <img src="website-explore-product.png" alt="Buy Now" />
+      <h3>
+        Explore Slayyin
+        Products
+      </h3>
+      <p><span style="color: #ffcc00;">Click here</span> to explore and purchase our latest collections.</p>
+    </div>
+  </section>
+
+  <section class="featured-products" id="featured-products">
+    <h2>Our Products</h2>
+    <div class="category-filters">
+      <button class="category-btn active" data-category="all">
+        All Products
+      </button>
+      <button class="category-btn" data-category="casuals">Casuals</button>
+      <button class="category-btn" data-category="college-formals">College Formals</button>
+      <button class="category-btn" data-category="college-utility">College Utility</button>
+    </div>
+    <div class="products-container" id="productsContainer">
+      <!-- Products will be loaded dynamically from Firebase -->
+    </div>
+  </section>
+
+  <section class="custom-merch-section">
+    <h2>Custom Merch Showcase</h2>
+    <div class="custom-merch-grid" id="customMerchContainer">
+      <div class="custom-merch-slider" id="customMerchSlider">
+        <!-- Custom merch items will be loaded dynamically -->
+      </div>
+      <div class="custom-merch-nav">
+        <div class="custom-merch-nav-btn" id="prevCard">
+          <i class="fas fa-chevron-left"></i>
+        </div>
+        <div class="custom-merch-nav-btn" id="nextCard">
+          <i class="fas fa-chevron-right"></i>
+        </div>
+      </div>
+    </div>
+    <div class="custom-merch-dots" id="customMerchDots">
+      <!-- Dots will be added dynamically -->
+    </div>
+  </section>
+
+  <section class="why-choose-us">
+    <h2>Why Choose Us?</h2>
+    <div class="usp-container">
+      <div class="usp-card">
+        <i class="fas fa-tshirt"></i>
+        <h3>Premium Quality</h3>
+        <p>
+          We use the best fabric and printing techniques for long-lasting
+          designs.
+        </p>
+      </div>
+      <div class="usp-card">
+        <i class="fas fa-truck"></i>
+        <h3>Free & Fast Delivery</h3>
+        <p>
+          Get your orders delivered to your doorstep quickly, at no extra
+          cost.
+        </p>
+      </div>
+      <div class="usp-card">
+        <i class="fas fa-pencil-ruler"></i>
+        <h3>Custom Designs</h3>
+        <p>Personalize your clothing with unique, one-of-a-kind designs.</p>
+      </div>
+      <div class="usp-card">
+        <i class="fas fa-fire"></i>
+        <h3>Trendy & Stylish</h3>
+        <p>
+          Our collections are always up-to-date with the latest fashion
+          trends.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-slayyin" section id="about-slayyin">
+    <div class="about-content">
+      <div class="about-text">
+        <h2>About Slayyin</h2>
+        <p>
+          Born out of student hustle and creativity, Slayyin aims to simplify campus life.
+        </p>
+        <p>
+          We're building the ultimate campus-centric platform where you'll
+          find everything from custom college merchandise to formals, daily essentials to stationery, accessories, and
+          gifting, Slayyin brings everything you need for campus life at one
+          place.</p>
+
+        <p>Think of us as the ultimate campus companion, rooted in
+          student life, driven by community, and designed to make your college
+          experience smoother, smarter, and way more stylish.
+        </p>
+
+        <p>Slayy smart. Slayy smooth. #SlayyYourStyle</p>
+      </div>
+      <div class="about-image">
+        <img src="website-slayyin.jpg" alt="About Slayyin" />
+      </div>
+    </div>
+  </section>
+
+  <section class="faq-section" section id="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-container">
+      <div class="faq-item">
+        <button class="faq-question">
+          How do I customize my merchandise? <span>+</span>
+        </button>
+        <div class="faq-answer">
+          You can customize your merch by filling out our online form
+          <a href="customize.html" style="color: #ffcc00">here</a>.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Can I place bulk orders for colleges or events? <span>+</span>
+        </button>
+        <div class="faq-answer">
+          Yes! We offer special discounts for bulk orders. Contact us for
+          details.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          What file formats do you accept for custom designs? <span>+</span>
+        </button>
+        <div class="faq-answer">We accept PNG, JPG, SVG, and AI files.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          How much does custom merchandise cost? <span>+</span>
+        </button>
+        <div class="faq-answer">
+          Pricing depends on design complexity and quantity. Bulk orders get
+          discounts!
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          What payment methods do you accept? <span>+</span>
+        </button>
+        <div class="faq-answer">
+          We accept UPI, Debit/Credit cards, and Net Banking.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          How long does it take to receive my order? <span>+</span>
+        </button>
+        <div class="faq-answer">
+          Standard delivery takes 5-7 days, bulk orders may take longer.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Do you offer international shipping? <span>+</span>
+        </button>
+        <div class="faq-answer">
+          Currently, we ship only within India. International shipping is
+          coming soon!
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          What if I receive a damaged or incorrect order? <span>+</span>
+        </button>
+        <div class="faq-answer">
+          If there's an issue, contact us within 48 hours for a resolution.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Can I return or exchange customized products? <span>+</span>
+        </button>
+        <div class="faq-answer">
+          Since custom products are made just for you, we don't offer returns.
+          But if there's a defect, we'll fix it.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          How do I cancel my order? <span>+</span>
+        </button>
+        <div class="faq-answer">
+          Orders can be canceled within 24 hours of placing them.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact-section">
+    <h2>Contact Us</h2>
+    <p>Have questions? Want to customize your merch? Reach out to us!</p>
+
+    <form id="contactForm" class="contact-form">
+      <input type="text" id="name" name="name" placeholder="Your Name" required />
+      <input type="email" id="email" name="email" placeholder="Your Email" required />
+      <textarea id="message" name="message" rows="4" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#featured-products">Shop</a></li>
+          <li><a href="customize.html">Customize</a></li>
+          <li><a href="#about-slayyin">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#faq-section">FAQ</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="https://www.instagram.com/slayyin.co/" target="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.linkedin.com/company/slayyin" target="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-section">
+        <h3>Policies</h3>
+        <ul>
+          <li><a href="policies.html#privacy-policy">Privacy Policy</a></li>
+          <li><a href="policies.html#return-policy">Return Policy</a></li>
+          <li><a href="policies.html#terms-of-service">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Slayyin. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Cart Sidebar -->
+  <div id="cart-sidebar">
+    <div class="cart-header">
+      <h2>Your Shopping Cart</h2>
+      <button class="close-cart" onclick="toggleCart()">×</button>
+    </div>
+    <div id="cart-items" class="cart-items">
+      <!-- Cart items will be added here dynamically -->
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>Total:</span>
+        <span id="cart-total">₹0</span>
+      </div>
+      <div class="cart-buttons">
+        <button class="checkout-btn" onclick="checkout()">Checkout</button>
+        <button class="clear-cart-btn" onclick="clearCart()">
+          Clear Cart
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Wishlist Sidebar -->
+  <div id="wishlist-sidebar">
+    <div class="wishlist-header">
+      <h2>Your Wishlist</h2>
+      <button class="close-wishlist" onclick="toggleWishlist()">×</button>
+    </div>
+    <div id="wishlist-items" class="wishlist-items">
+      <!-- Wishlist items will be added here dynamically -->
+    </div>
+  </div>
+
+  <!-- Overlay for sidebars -->
+  <div id="overlay"></div>
+
+  <!-- Account Dashboard Sidebar -->
+  <div id="dashboard-sidebar">
+    <div class="dashboard-header">
+      <h2>My Account</h2>
+      <button class="close-dashboard" onclick="toggleDashboard()">×</button>
+    </div>
+    <div id="dashboard-content" class="dashboard-content">
+      <div class="dashboard-section" id="dashboard-overview">
+        <h3>Dashboard</h3>
+        <div class="dashboard-info">
+          <div class="user-info">
+            <i class="fas fa-user-circle user-avatar"></i>
+            <div class="user-details">
+              <p class="user-name" id="dashboard-user-name">User Name</p>
+              <p class="user-email" id="dashboard-user-email">
+                user@example.com
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="dashboard-stats">
+          <div class="stat-box">
+            <i class="fas fa-shopping-bag"></i>
+            <div class="stat-info">
+              <span class="stat-count" id="orders-count">0</span>
+              <span class="stat-label">Orders</span>
+            </div>
+          </div>
+          <div class="stat-box">
+            <i class="fas fa-heart"></i>
+            <div class="stat-info">
+              <span class="stat-count" id="wishlist-count">0</span>
+              <span class="stat-label">Wishlist</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dashboard-section" id="dashboard-orders">
+        <h3>My Orders</h3>
+        <div class="orders-list" id="orders-list">
+          <!-- Orders will be loaded dynamically -->
+          <p class="empty-message">No orders yet.</p>
+        </div>
+      </div>
+
+      <div class="dashboard-section" id="dashboard-profile">
+        <h3>My Profile</h3>
+        <form id="profileForm" class="profile-form">
+          <div class="form-group">
+            <label for="profile-name">Name</label>
+            <input type="text" id="profile-name" name="name" placeholder="Your Name" />
+          </div>
+          <div class="form-group">
+            <label for="profile-email">Email</label>
+            <input type="email" id="profile-email" name="email" placeholder="Your Email" readonly />
+          </div>
+          <div class="form-group">
+            <label for="profile-phone">Phone</label>
+            <input type="tel" id="profile-phone" name="phone" placeholder="Your Phone Number" />
+          </div>
+          <div class="form-group">
+            <label for="profile-address">Address</label>
+            <textarea id="profile-address" name="address" placeholder="Your Address" rows="3"></textarea>
+          </div>
+          <button type="submit" class="update-profile-btn">
+            Update Profile
+          </button>
+        </form>
+      </div>
+
+      <div class="dashboard-footer">
+        <button id="logout-btn" class="logout-btn" onclick="logout()">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="coming-soon-overlay" id="comingSoonOverlay"></div>
+  <div class="coming-soon-message" id="comingSoonMessage">
+    <h3>Full drop coming soon!</h3>
+    <p>Congrats, You're early!</p>
+    <p>We've already coded the full experience - from sign-up to checkout - all ready to roll.</p>
+    <p>For now, we're keeping it simple while accepting orders through WhatsApp to offer personal support and ensure everything runs smooth during the initial days.</p>
+    <p>You're not just a customer - you're part of our Day 1 crew.</p>
+    <p>Let's Slayy!</p>
+    <button onclick="closeComingSoonMessage()" style="margin-top: 20px; padding: 10px 20px; background: #ffcc00; border: none; border-radius: 5px; cursor: pointer;">Got it!</button>
+  </div>
+
+  <!-- Remove references to missing files -->
+  <!-- <script src="cart.js"></script> -->
+  <script src="config.js"></script>
+  <!-- <script src="auth.js"></script> -->
+  <script src="custom-merch.js"></script>
+
+  <script>
+    document.querySelectorAll(".faq-question").forEach((button) => {
+      button.addEventListener("click", () => {
+        const faqItem = button.parentElement;
+        faqItem.classList.toggle("active");
+      });
+    });
+  </script>
+
+  <script>
+    // Product data
+    const products = [
+      {
+        id: "1",
+        name: "Classic Black T-Shirt",
+        price: 599,
+        salePrice: 499,
+        images: [
+          "hoopers-showcase.jpg",
+          "hoopers-showcase.jpg",
+          "hoopers-showcase.jpg",
+          "hoopers-showcase.jpg"
+        ],
+        category: "casuals",
+        description: "Premium quality black t-shirt with a comfortable fit. Perfect for everyday wear.",
+        sizes: ["S", "M", "L", "XL"],
+        colors: ["Black"],
+        material: "100% Cotton"
+      },
+      {
+        id: "2",
+        name: "Urban Hoodie",
+        price: 1299,
+        salePrice: 999,
+        images: [
+          "hoopers-showcase.jpg",
+          "hoopers-showcase.jpg",
+          "hoopers-showcase.jpg",
+          "hoopers-showcase.jpg"
+        ],
+        category: "casuals",
+        description: "Stylish urban hoodie with modern design. Great for casual outings.",
+        sizes: ["S", "M", "L", "XL"],
+        colors: ["Gray", "Black"],
+        material: "80% Cotton, 20% Polyester"
+      },
+      {
+        id: "3",
+        name: "College Blazer",
+        price: 2499,
+        salePrice: 1999,
+        images: [
+          "hoopers-showcase.jpg",
+          "hoopers-showcase.jpg",
+          "hoopers-showcase.jpg",
+          "hoopers-showcase.jpg"
+        ],
+        category: "college-formals",
+        description: "Professional college blazer with embroidered logo. Perfect for formal events.",
+        sizes: ["S", "M", "L", "XL"],
+        colors: ["Navy", "Black"],
+        material: "Premium Wool Blend"
+      },
+      {
+        id: "4",
+        name: "College ID Card Holder",
+        price: 299,
+        salePrice: 249,
+        images: [
+          "hoopers-showcase.jpg",
+          "hoopers-showcase.jpg",
+          "hoopers-showcase.jpg",
+          "hoopers-showcase.jpg"
+        ],
+        category: "college-utility",
+        description: "Durable ID card holder with lanyard. Essential college accessory.",
+        sizes: ["One Size"],
+        colors: ["Black", "Blue"],
+        material: "Premium PVC"
+      }
+    ];
+
+    // Load products function
+    function loadProducts(category = "all") {
+      const productsContainer = document.getElementById("productsContainer");
+      if (!productsContainer) {
+        console.error("Products container not found");
+        return;
+      }
+
+      productsContainer.innerHTML = ""; // Clear existing products
+
+      const filteredProducts = category === "all" 
+        ? products 
+        : products.filter(product => product.category === category);
+
+      filteredProducts.forEach((product) => {
+        const productCard = document.createElement("div");
+        productCard.className = "product-card";
+
+        // Create image element with error handling
+        const img = document.createElement("img");
+        img.src = product.images[0] || "placeholder.jpg";
+        img.alt = product.name;
+        img.onerror = function () {
+          this.src = "placeholder.jpg";
+          console.error(`Failed to load image for product: ${product.name}`);
+        };
+
+        productCard.innerHTML = `
+          <div class="product-image">
+            ${img.outerHTML}
+            <div class="wishlist-icon" onclick="event.stopPropagation(); addToWishlist('${product.id}')">
+              <i class="fas fa-heart"></i>
+            </div>
+          </div>
+          <div class="product-info">
+            <h3>${product.name}</h3>
+            <div class="product-price">
+              ${product.salePrice
+                ? `<span class="sale-price">₹${product.salePrice.toFixed(2)}</span>
+                   <span class="original-price">₹${product.price.toFixed(2)}</span>`
+                : `<span>₹${product.price.toFixed(2)}</span>`
+              }
+            </div>
+            <button class="buy-now-btn" onclick="event.stopPropagation(); redirectToWhatsApp('${product.id}', '${product.name}', ${product.salePrice || product.price})">
+              <i class="fab fa-whatsapp"></i> Buy Now
+            </button>
+          </div>
+        `;
+
+        productCard.onclick = () => {
+          // Store product data in localStorage for the product details page
+          localStorage.setItem('currentProduct', JSON.stringify(product));
+          window.location.href = `product-details.html?id=${product.id}`;
+        };
+        
+        productsContainer.appendChild(productCard);
+      });
+    }
+
+    // Initialize everything when the page loads
+    document.addEventListener("DOMContentLoaded", function() {
+      // Initialize category buttons
+      const categoryButtons = document.querySelectorAll(".category-btn");
+      let currentCategory = "all";
+
+      // Add click event listeners to category buttons
+      if (categoryButtons) {
+        categoryButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            // Remove active class from all buttons
+            categoryButtons.forEach((btn) => btn.classList.remove("active"));
+            // Add active class to clicked button
+            button.classList.add("active");
+            // Update current category
+            currentCategory = button.dataset.category;
+            // Load products for selected category
+            loadProducts(currentCategory);
+          });
+        });
+      }
+
+      // Load initial products
+      loadProducts();
+
+      // Initialize cart
+      if (typeof updateCartCount === 'function') {
+        updateCartCount();
+      }
+
+      // Initialize scroll reveal
+      const productsContainer = document.getElementById("productsContainer");
+      if (productsContainer) {
+        function revealOnScroll() {
+          const containerPosition = productsContainer.getBoundingClientRect().top;
+          const screenPosition = window.innerHeight / 1.3;
+
+          if (containerPosition < screenPosition) {
+            productsContainer.classList.add("active");
+          }
+        }
+
+        window.addEventListener("scroll", revealOnScroll);
+        revealOnScroll();
+      }
+    });
+  </script>
+
+  <script>
+    function scrollToCustomization() {
+      document
+        .getElementById("customization-section")
+        .scrollIntoView({ behavior: "smooth" });
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const whyChooseUs = document.querySelector(".why-choose-us");
+
+      function revealUSP() {
+        const sectionPosition = whyChooseUs.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.3;
+
+        if (sectionPosition < screenPosition) {
+          whyChooseUs.classList.add("active");
+        }
+      }
+
+      window.addEventListener("scroll", revealUSP);
+      revealUSP(); // Run once on load
+    });
+  </script>
+
+  <script>
+    // Account dropdown functionality
+    function toggleAccountDropdown(event) {
+      event.stopPropagation();
+      const dropdown = document.getElementById("account-dropdown");
+      dropdown.classList.toggle("active");
+    }
+
+    // Toggle dashboard sidebar
+    function toggleDashboard(section) {
+      const dashboardSidebar = document.getElementById("dashboard-sidebar");
+      const overlay = document.getElementById("overlay");
+
+      if (!dashboardSidebar) {
+        console.error("Dashboard sidebar element not found");
+        return;
+      }
+
+      const isOpening = !dashboardSidebar.classList.contains("active");
+
+      dashboardSidebar.classList.toggle("active");
+
+      if (overlay) {
+        overlay.classList.toggle("active");
+      }
+
+      // If opening the sidebar, load user data
+      if (isOpening) {
+        loadUserDashboard();
+
+        // Show specific section if requested
+        if (section) {
+          showDashboardSection(section);
+        }
+      }
+    }
+
+    // Show specific dashboard section
+    function showDashboardSection(sectionId) {
+      // Hide all sections first
+      const sections = document.querySelectorAll(".dashboard-section");
+      sections.forEach((section) => {
+        section.style.display = "none";
+      });
+
+      // Show requested section
+      const targetSection = document.getElementById(sectionId);
+      if (targetSection) {
+        targetSection.style.display = "block";
+      } else {
+        // If section not found, show overview
+        document.getElementById("dashboard-overview").style.display = "block";
+      }
+    }
+
+    // Load user dashboard data
+    function loadUserDashboard() {
+      const user = JSON.parse(localStorage.getItem("slayyin-user"));
+
+      if (user && user.isLoggedIn) {
+        // Make sure all sections are visible by default
+        const sections = document.querySelectorAll(".dashboard-section");
+        sections.forEach((section) => {
+          section.style.display = "block";
+        });
+
+        // Update user info
+        document.getElementById("dashboard-user-name").textContent =
+          user.name || "User";
+        document.getElementById("dashboard-user-email").textContent =
+          user.email || "No email";
+
+        // Load profile data
+        if (user.name)
+          document.getElementById("profile-name").value = user.name;
+        if (user.email)
+          document.getElementById("profile-email").value = user.email;
+        if (user.phone)
+          document.getElementById("profile-phone").value = user.phone;
+        if (user.address)
+          document.getElementById("profile-address").value = user.address;
+
+        // Update wishlist count
+        const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+        document.getElementById("wishlist-count").textContent =
+          wishlist.length;
+
+        // Load orders (this would normally fetch from the database)
+        loadUserOrders(user.id);
+      }
+    }
+
+    // Load user orders
+    function loadUserOrders(userId) {
+      const ordersList = document.getElementById("orders-list");
+
+      // In a real app, you would fetch orders from the database
+      // For demo purposes, we'll check if there are any orders in localStorage
+      const orders = JSON.parse(localStorage.getItem("slayyin-orders")) || [];
+      const userOrders = orders.filter((order) => order.userId === userId);
+
+      if (userOrders.length === 0) {
+        ordersList.innerHTML = '<p class="empty-message">No orders yet.</p>';
+        document.getElementById("orders-count").textContent = "0";
+        return;
+      }
+
+      document.getElementById("orders-count").textContent = userOrders.length;
+
+      let ordersHTML = "";
+      userOrders.forEach((order) => {
+        ordersHTML += `
+          <div class="order-item">
+            <div class="order-header">
+              <div class="order-id">Order #${order.id}</div>
+              <div class="order-date">${new Date(
+          order.date
+        ).toLocaleDateString()}</div>
+              <div class="order-status ${order.status.toLowerCase()}">${order.status
+          }</div>
+            </div>
+            <div class="order-details">
+              <div class="order-total">Total: ₹${order.total.toFixed(2)}</div>
+              <div class="order-items-count">${order.items.length} items</div>
+            </div>
+          </div>
+        `;
+      });
+
+      ordersList.innerHTML = ordersHTML;
+    }
+
+    // Profile form submission
+    document
+      .getElementById("profileForm")
+      .addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const user = JSON.parse(localStorage.getItem("slayyin-user")) || {};
+
+        // Update user data
+        user.name = document.getElementById("profile-name").value;
+        user.phone = document.getElementById("profile-phone").value;
+        user.address = document.getElementById("profile-address").value;
+
+        // Save updated user data
+        localStorage.setItem("slayyin-user", JSON.stringify(user));
+
+        // Update the dashboard display
+        document.getElementById("dashboard-user-name").textContent =
+          user.name;
+
+        // Show notification
+        showNotification("Profile updated successfully!");
+      });
+
+    // Close dropdown when clicking elsewhere
+    document.addEventListener("click", function (event) {
+      const dropdown = document.getElementById("account-dropdown");
+      if (dropdown && dropdown.classList.contains("active")) {
+        dropdown.classList.remove("active");
+      }
+    });
+
+    // Update account dropdown based on login status
+    function updateAccountDropdown() {
+      const dropdown = document.getElementById("account-dropdown");
+      if (!dropdown) return;
+
+      const user = JSON.parse(localStorage.getItem("slayyin-user"));
+
+      if (user && user.isLoggedIn) {
+        // User is logged in, show logged-in options
+        dropdown.innerHTML = `
+          <div class="account-user-info">
+            <i class="fas fa-user-circle"></i>
+            <div class="account-user-details">
+              <p class="account-user-name">${user.name || "User"}</p>
+              <p class="account-user-email">${user.email || ""}</p>
+            </div>
+          </div>
+          <hr>
+          <a href="#" class="account-dropdown-item" onclick="toggleDashboard(); event.stopPropagation();">
+            <i class="fas fa-tachometer-alt"></i> Dashboard
+          </a>
+          <a href="#" class="account-dropdown-item" onclick="toggleDashboard('dashboard-orders'); event.stopPropagation();">
+            <i class="fas fa-shopping-bag"></i> My Orders
+          </a>
+          <a href="#" class="account-dropdown-item" onclick="toggleDashboard('dashboard-profile'); event.stopPropagation();">
+            <i class="fas fa-user-edit"></i> Update Profile
+          </a>
+          <a href="#" class="account-dropdown-item" onclick="toggleWishlist(); event.stopPropagation();">
+            <i class="fas fa-heart"></i> My Wishlist
+          </a>
+          <hr>
+          <a href="#" class="account-dropdown-item" onclick="logout(); event.stopPropagation();">
+            <i class="fas fa-sign-out-alt"></i> Logout
+          </a>
+        `;
+      } else {
+        // User is not logged in, show login/signup options
+        dropdown.innerHTML = `
+          <a href="login.html" class="account-dropdown-item">
+            <i class="fas fa-sign-in-alt"></i> Login
+          </a>
+          <a href="signup.html" class="account-dropdown-item">
+            <i class="fas fa-user-plus"></i> Create Account
+          </a>
+        `;
+      }
+    }
+
+    // Logout function
+    function logout() {
+      // Clear user data
+      localStorage.removeItem("slayyin-user");
+
+      // Update dropdown
+      updateAccountDropdown();
+
+      // Close dashboard if open
+      const dashboardSidebar = document.getElementById("dashboard-sidebar");
+      if (dashboardSidebar && dashboardSidebar.classList.contains("active")) {
+        toggleDashboard();
+      }
+
+      // Show notification
+      showNotification("Logged out successfully!");
+    }
+
+    // Initialize account dropdown on page load
+    document.addEventListener("DOMContentLoaded", function () {
+      updateAccountDropdown();
+    });
+  </script>
+
+  <script>
+    function scrollToFeaturedProducts() {
+      document
+        .getElementById("featured-products")
+        .scrollIntoView({ behavior: "smooth" });
+    }
+  </script>
+
+  <!-- Remove Firebase SDK -->
+  <!-- <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-storage-compat.js"></script> -->
+
+  <!-- Remove Database Files -->
+  <!-- <script src="firebase-config.js"></script>
+  <script src="database.js"></script> -->
+  <script>
+    // Add missing updateWishlistCount function
+    function updateWishlistCount() {
+      const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+      const wishlistCount = document.querySelector(".wishlist-count");
+      if (wishlistCount) {
+        wishlistCount.textContent = wishlist.length;
+      }
+    }
+
+    // Fix the closest selector error
+    document.addEventListener("click", function (event) {
+      const desktopSearchContainer = document.querySelector(".header-center .search-container");
+      const mobileSearchContainer = document.querySelector(".mobile-search-container .search-container");
+
+      if (!event.target.closest(".header-center .search-container")) {
+        searchResults.classList.remove("active");
+      }
+
+      if (mobileSearchContainer && !event.target.closest(".mobile-search-container .search-container") && !event.target.closest(".mobile-search-icon")) {
+        document.getElementById("mobileSearchResults").classList.remove("active");
+      }
+    });
+
+    // Fix the contact form submission
+    document.getElementById("contactForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      
+      // For now, just show a success message since we don't have the Google Apps Script URL
+      alert("Thank you for your message! We will get back to you soon.");
+      document.getElementById("contactForm").reset();
+      
+      /* Comment out the Google Apps Script integration until we have the URL
+      const formData = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        message: document.getElementById("message").value,
+      };
+
+      const scriptURL = "YOUR_GOOGLE_APPS_SCRIPT_URL";
+
+      fetch(scriptURL, {
+        method: "POST",
+        body: JSON.stringify(formData),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.result === "success") {
+            alert("Thank you for your message! We will get back to you soon.");
+            document.getElementById("contactForm").reset();
+          } else {
+            throw new Error("Something went wrong");
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          alert("Sorry, there was an error sending your message.");
+        });
+      */
+    });
+  </script>
+
+  <script>
+    // Search functionality
+    const searchInput = document.getElementById("searchInput");
+    const searchResults = document.getElementById("searchResults");
+    let searchTimeout;
+
+    searchInput.addEventListener("input", function () {
+      clearTimeout(searchTimeout);
+      const searchTerm = this.value.toLowerCase().trim();
+
+      if (searchTerm.length < 2) {
+        searchResults.classList.remove("active");
+        return;
+      }
+
+      searchTimeout = setTimeout(() => {
+        searchProducts(searchTerm, searchResults);
+      }, 300);
+    });
+
+    async function searchProducts(searchTerm, resultsContainer) {
+      try {
+        const products = [
+          {
+            id: "1",
+            name: "Classic Black T-Shirt",
+            price: 599,
+            salePrice: 499,
+            images: ["tshirt-black.jpg"],
+            category: "casuals"
+          },
+          {
+            id: "2",
+            name: "Urban Hoodie",
+            price: 1299,
+            salePrice: 999,
+            images: ["hoodie-urban.jpg"],
+            category: "casuals"
+          },
+          {
+            id: "3",
+            name: "College Blazer",
+            price: 2499,
+            salePrice: 1999,
+            images: ["blazer-college.jpg"],
+            category: "college-formals"
+          },
+          {
+            id: "4",
+            name: "College ID Card Holder",
+            price: 299,
+            salePrice: 249,
+            images: ["id-card-holder.jpg"],
+            category: "college-utility"
+          }
+          // Add more products as needed
+        ];
+
+        const results = products.filter(product => 
+          product.name.toLowerCase().includes(searchTerm)
+        );
+
+        displaySearchResults(results, resultsContainer);
+      } catch (error) {
+        console.error("Error searching products:", error);
+        resultsContainer.innerHTML = '<div class="search-result-item no-results">Error searching products</div>';
+        resultsContainer.classList.add("active");
+      }
+    }
+
+    function displaySearchResults(results, resultsContainer) {
+      if (results.length === 0) {
+        resultsContainer.innerHTML = '<div class="search-result-item no-results">No products found</div>';
+      } else {
+        resultsContainer.innerHTML = results
+          .map(
+            (product) => `
+              <div class="search-result-item" onclick="window.location.href='product-details.html?id=${product.id}'">
+                <img src="${product.images[0] || 'placeholder.jpg'}" alt="${product.name}">
+                <div class="product-info">
+                  <div class="product-name">${product.name}</div>
+                  <div class="product-price">
+                    ${product.salePrice
+                      ? `<span class="sale-price">₹${product.salePrice.toFixed(2)}</span>
+                         <span class="original-price">₹${product.price.toFixed(2)}</span>`
+                      : `<span>₹${product.price.toFixed(2)}</span>`
+                    }
+                  </div>
+                </div>
+              </div>
+            `
+          )
+          .join("");
+      }
+      resultsContainer.classList.add("active");
+    }
+
+    // Close search results when clicking outside
+    document.addEventListener("click", function (event) {
+      const desktopSearchContainer = document.querySelector(
+        ".header-center .search-container"
+      );
+      const mobileSearchContainer = document.querySelector(
+        ".mobile-search-container .search-container"
+      );
+
+      if (!event.target.closest(desktopSearchContainer)) {
+        searchResults.classList.remove("active");
+      }
+
+      if (
+        mobileSearchContainer &&
+        !event.target.closest(mobileSearchContainer) &&
+        !event.target.closest(".mobile-search-icon")
+      ) {
+        document
+          .getElementById("mobileSearchResults")
+          .classList.remove("active");
+      }
+    });
+  </script>
+
+  <script>
+    function handleWishlistClick() {
+      const user = JSON.parse(localStorage.getItem("slayyin-user"));
+      if (user && user.isLoggedIn) {
+        toggleWishlist();
+      } else {
+        window.location.href = "login.html?redirect=wishlist";
+      }
+    }
+  </script>
+
+  <script>
+    // Wishlist functionality
+    function addToWishlist(productId) {
+      showComingSoonMessage(event);
+    }
+
+    // Initialize wishlist on page load
+    document.addEventListener("DOMContentLoaded", function () {
+      // Update wishlist icons for products in wishlist
+      const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+      wishlist.forEach((productId) => {
+        const wishlistIcon = document.querySelector(
+          `[onclick*="${productId}"]`
+        );
+        if (wishlistIcon) {
+          wishlistIcon.classList.add("active");
+        }
+      });
+    });
+
+    // Notification function
+    function showNotification(message) {
+      const notification = document.createElement("div");
+      notification.className = "notification";
+      notification.textContent = message;
+      document.body.appendChild(notification);
+
+      // Trigger reflow
+      notification.offsetHeight;
+      notification.classList.add("show");
+
+      setTimeout(() => {
+        notification.classList.remove("show");
+        setTimeout(() => {
+          notification.remove();
+        }, 300);
+      }, 2000);
+    }
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Add click event listener to overlay to close sidebars
+      const overlay = document.getElementById("overlay");
+      if (overlay) {
+        overlay.addEventListener("click", function () {
+          // Close cart sidebar if open
+          const cartSidebar = document.getElementById("cart-sidebar");
+          if (cartSidebar && cartSidebar.classList.contains("active")) {
+            toggleCart();
+          }
+
+          // Close wishlist sidebar if open
+          const wishlistSidebar = document.getElementById("wishlist-sidebar");
+          if (
+            wishlistSidebar &&
+            wishlistSidebar.classList.contains("active")
+          ) {
+            toggleWishlist();
+          }
+
+          // Close dashboard sidebar if open
+          const dashboardSidebar =
+            document.getElementById("dashboard-sidebar");
+          if (
+            dashboardSidebar &&
+            dashboardSidebar.classList.contains("active")
+          ) {
+            toggleDashboard();
+          }
+        });
+      }
+
+      // Initialize wishlist count
+      updateWishlistCount();
+    });
+  </script>
+
+  <script>
+    function toggleMobileSearch() {
+      const mobileSearchContainer = document.getElementById(
+        "mobileSearchContainer"
+      );
+      mobileSearchContainer.classList.toggle("active");
+
+      // Focus on the search input when opening
+      if (mobileSearchContainer.classList.contains("active")) {
+        document.getElementById("mobileSearchInput").focus();
+      }
+    }
+
+    // Close mobile search when clicking outside
+    document.addEventListener("click", function (event) {
+      const mobileSearchContainer = document.getElementById(
+        "mobileSearchContainer"
+      );
+      const mobileSearchIcon = document.querySelector(".mobile-search-icon");
+
+      if (
+        mobileSearchContainer &&
+        mobileSearchContainer.classList.contains("active")
+      ) {
+        if (
+          !mobileSearchContainer.contains(event.target) &&
+          !mobileSearchIcon.contains(event.target)
+        ) {
+          mobileSearchContainer.classList.remove("active");
+        }
+      }
+    });
+
+    // Add mobile search functionality
+    document.addEventListener("DOMContentLoaded", function () {
+      const mobileSearchInput = document.getElementById("mobileSearchInput");
+      const mobileSearchResults = document.getElementById(
+        "mobileSearchResults"
+      );
+      let mobileSearchTimeout;
+
+      if (mobileSearchInput) {
+        mobileSearchInput.addEventListener("input", function () {
+          clearTimeout(mobileSearchTimeout);
+          const searchTerm = this.value.toLowerCase().trim();
+
+          if (searchTerm.length < 2) {
+            mobileSearchResults.classList.remove("active");
+            return;
+          }
+
+          mobileSearchTimeout = setTimeout(() => {
+            searchProducts(searchTerm, mobileSearchResults);
+          }, 300);
+        });
+      }
+    });
+  </script>
+
+  <!-- Update WhatsApp redirection -->
+  <script>
+    function redirectToWhatsApp(productId, productName, price) {
+      const message = config.whatsapp.messageTemplate
+        .replace('{productName}', productName)
+        .replace('{price}', price.toFixed(2))
+        .replace('{productId}', productId);
+      const whatsappUrl = `https://wa.me/${config.whatsapp.businessNumber}?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank');
+    }
+  </script>
+
+  <script>
+    function showComingSoonMessage(event, isHover = false) {
+      event.preventDefault();
+      event.stopPropagation();
+      
+      if (isHover) {
+        document.getElementById('comingSoonOverlay').classList.add('active');
+        document.getElementById('comingSoonMessage').classList.add('active');
+        
+        // Auto-hide after hover ends
+        const icon = event.currentTarget;
+        icon.addEventListener('mouseleave', () => {
+          document.getElementById('comingSoonOverlay').classList.remove('active');
+          document.getElementById('comingSoonMessage').classList.remove('active');
+        }, { once: true });
+      } else {
+        document.getElementById('comingSoonOverlay').classList.add('active');
+        document.getElementById('comingSoonMessage').classList.add('active');
+      }
+    }
+
+    function showFeatureComingSoon() {
+      const notification = document.createElement('div');
+      notification.className = 'feature-coming-soon';
+      notification.textContent = 'Account feature coming soon';
+      document.body.appendChild(notification);
+      
+      // Trigger reflow
+      notification.offsetHeight;
+      
+      // Show notification
+      notification.classList.add('show');
+      
+      // Remove after 2 seconds
+      setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => {
+          notification.remove();
+        }, 300);
+      }, 2000);
+    }
+
+    // Update event listeners for header icons
+    const headerIcons = document.querySelectorAll('.user-icon-container, .wishlist-icon, .cart-icon');
+    headerIcons.forEach(icon => {
+      icon.addEventListener('mouseenter', (e) => showComingSoonMessage(e, true));
+      icon.addEventListener('click', (e) => showComingSoonMessage(e, false));
+    });
+
+    // Update wishlist and cart functions
+    function addToWishlist(productId) {
+      showFeatureComingSoon();
+    }
+
+    function addToCart(productId) {
+      showFeatureComingSoon();
+    }
+
+    function handleWishlistClick() {
+      showFeatureComingSoon();
+    }
+
+    function toggleCart() {
+      showFeatureComingSoon();
+    }
+
+    function checkout() {
+      showFeatureComingSoon();
+    }
+
+    function clearCart() {
+      showFeatureComingSoon();
+    }
+  </script>
+</body>
+
+</html>
