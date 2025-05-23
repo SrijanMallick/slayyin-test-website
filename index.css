@@ -2625,6 +2625,7 @@ transform: scale(1.05);
     .contact-form input, 
     .contact-form textarea {
         padding: 10px;
+        align-self: center;
         margin-bottom: 12px;
         font-size: 0.95rem;
     }
